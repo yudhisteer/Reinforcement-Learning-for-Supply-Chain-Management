@@ -1,5 +1,13 @@
 # Reinforcement Learning: Optimizing Warehouse Flows
 
+![image](https://user-images.githubusercontent.com/59663734/140646605-98841672-0769-44f4-924b-b76e5e309307.png)
+
+
+
+https://user-images.githubusercontent.com/59663734/140646492-49b8debe-ba8c-4a06-b44f-0401875b081c.mp4
+
+
+
 ## Abstract
 
 ## Case Study
