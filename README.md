@@ -4,6 +4,7 @@
 
 ## Case Study
 
+![Untitled_Artwork](https://user-images.githubusercontent.com/59663734/140641704-6f8bf1d7-a9ec-4460-bd9f-1c9464ac2537.gif)
 
 ## Plan of Attack
 
