@@ -4,6 +4,13 @@
 
 ## Case Study
 
+![image](https://user-images.githubusercontent.com/59663734/140644626-98354f2a-3b42-4de0-808a-c2e182e8092a.png)
+
+![actu-rt-knits-fl_opt_20191206113258-scaled](https://user-images.githubusercontent.com/59663734/140644631-b4fa3d0d-f389-451b-aa96-fd2239e90e11.jpg)
+
+![image](https://user-images.githubusercontent.com/59663734/140645995-667ae107-702b-483f-b95f-01e60aa331ec.png)
+
+
 ![Untitled_Artwork](https://user-images.githubusercontent.com/59663734/140641704-6f8bf1d7-a9ec-4460-bd9f-1c9464ac2537.gif)
 
 ## Plan of Attack
@@ -26,5 +33,8 @@
 - Improcement
 
 ## Conclusion
+
+![Untitled_Artwork (1) (1)](https://user-images.githubusercontent.com/59663734/140646265-13d7af87-cba2-429d-902d-eda4efd71838.gif)
+
 
 ## References
