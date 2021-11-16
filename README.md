@@ -29,9 +29,14 @@ https://user-images.githubusercontent.com/59663734/140646492-49b8debe-ba8c-4a06-
 
 
 2. The AI Solution
+- What is Reinforcement Learning?
+- Bellman Equation
 - Markov Decision Process(MDP)
-- Temporal Difference
+- Policy vs Plan
+- Living Penalty
 - Q-Learning
+- Temporal Difference
+
 
 
 3. Implementation
