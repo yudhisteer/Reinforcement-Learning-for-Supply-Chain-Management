@@ -79,10 +79,7 @@ In simpler terms, it means that it does not matter where our agent has been befo
 
 For our simplified gridworld, it contains ```11``` states and four possible actions per state: ```Left, Right, Up, Down```. And when we want our robot to come Up for example, it does not always go Up all the time. Due to friction or dynamic noise of our robot, it can slightly veer left or right and we need to model this stochastic behavior which we will experience in the real-world to to our environment. 
 
-
-![image](https://user-images.githubusercontent.com/59663734/142262352-64ed7f51-a9c8-4bf8-93f7-f720ce2d9fe6.png)
-
-
+![image](https://user-images.githubusercontent.com/59663734/142266339-4af7b212-2568-48d1-88ef-5aab206b470e.png)
 
 
 
