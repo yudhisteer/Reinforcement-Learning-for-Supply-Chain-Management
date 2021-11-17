@@ -57,10 +57,30 @@ Early on, reinforcement learning has been used to play games like Atari Breakout
 
 
 ### 2.1 Markov Decision Process(MDP)
-Reinforcement Learning problems are modelled by Markov Decision Process(MDP). MDP is a formalism to represent the world where our agent will interact with. It is a tuple of five elements: 
+Reinforcement Learning problems are modelled by Markov Decision Process(MDP). MDP is a formalism to represent the world where our agent will interact with. It is a tuple of five elements: ![image](https://user-images.githubusercontent.com/59663734/142256520-82a1fbd8-fed2-405e-9567-08c7028cad3c.png)
+
+ - S: Set of States (In chess this equals all possible chess positions and in our warehouse problem this will equal all posible positions our robot can navigate)
+ - A: Set of Actions (In the helicopter example this could be all the positions we can move our control sticks and in our case it will be all the possible moves our robot can make)
+
+ - <img src="https://latex.codecogs.com/svg.image?P{sa}" title="P{sa}" />: State Transisiton Probabilities ![image](https://user-images.githubusercontent.com/59663734/142258379-d6ebb940-c611-437d-acf3-180f9b0c88e0.png) (If we take a certain action a in state s then what is the probability of reaching state s')
+ - <img src="https://latex.codecogs.com/svg.image?\gamma&space;" title="\gamma " />: Discount Factor <img src="https://latex.codecogs.com/svg.image?\gamma&space;&space;\epsilon&space;&space;[0,1]" title="\gamma \epsilon [0,1]" />
+ - R: Reward Function
+
+For simplicity, we wil reduce our warehouse to a simple ```4 x 3``` grid world with one obstacle at coordinates (2,2) as shown below:
+
+![image](https://user-images.githubusercontent.com/59663734/142264675-d6b388cb-5c04-4f47-9344-f64b8558afdb.png)
+
+### Markov Process
+In order to understand MDP, it is important to understand what is a Markov Process. By definition a Makrov process is: 
+
+_"A Markov chain or Markov process is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. A countably infinite sequence, in which the chain moves state at discrete time steps, gives a discrete-time Markov chain."_
+
+In simpler terms, it means that it does not matter where our agent has been before in our gridworld. It is a random process in which the future is independent of the past, given the present. What will happen in the future is only determined by the state our agent is in now plus the actions it will take with the overlay of randomness.
+
+For our simplified gridworld, it contains ```11``` states and four possible actions per state: ```Left, Right, Up, Down```. And when we want our robot to come Up for example, it does not always go Up all the time. Due to friction or dynamic noise of our robot, it can slightly veer left or right and we need to model this stochastic behavior which we will experience in the real-world to to our environment. 
 
 
-
+![image](https://user-images.githubusercontent.com/59663734/142262352-64ed7f51-a9c8-4bf8-93f7-f720ce2d9fe6.png)
 
 
 
