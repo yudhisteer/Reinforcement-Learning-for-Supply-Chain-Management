@@ -70,8 +70,7 @@ For simplicity, we wil reduce our warehouse to a simple ```4 x 3``` grid world w
 
 ![image](https://user-images.githubusercontent.com/59663734/142264675-d6b388cb-5c04-4f47-9344-f64b8558afdb.png)
 
-### Markov Process
-In order to understand MDP, it is important to understand what is a Markov Process. By definition a Makrov process is: 
+In order to understand MDP, it is important to understand what is a **Markov Process**. By definition a Markov process is: 
 
 _"A Markov chain or Markov process is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. A countably infinite sequence, in which the chain moves state at discrete time steps, gives a discrete-time Markov chain."_
 
@@ -81,8 +80,20 @@ For our simplified gridworld, it contains ```11``` states and four possible acti
 
 ![image](https://user-images.githubusercontent.com/59663734/142266339-4af7b212-2568-48d1-88ef-5aab206b470e.png)
 
+If we have our robot in cell ```(3,1)``` and we need it to go tUp to cell ```(3,2)``` then the chance of it really going Up is as follows:
 
+ - <img src="https://latex.codecogs.com/svg.image?P_{3,1}&space;\sim&space;(3,2)&space;=&space;0.8" title="P_{3,1} \sim (3,2) = 0.8" />
+ - <img src="https://latex.codecogs.com/svg.image?P_{3,1}&space;\sim&space;(4,2)&space;=&space;0.1" title="P_{3,1} \sim (4,2) = 0.1" />
+ - <img src="https://latex.codecogs.com/svg.image?P_{3,1}&space;\sim&space;(2,1)&space;=&space;0.1" title="P_{3,1} \sim (2,1) = 0.1" />
+ - <img src="https://latex.codecogs.com/svg.image?P_{3,1}&space;\sim&space;(3,3)&space;=&space;0" title="P_{3,1} \sim (3,3) = 0" />
 
+To sum up, our robot will wake up at state:
+
+- Our robot will wake up at state <img src="https://latex.codecogs.com/svg.image?s_{0}" title="s_{0}" /> (At the moment we turn on the robot)
+- Based on the state it is in, it will choose some action <img src="https://latex.codecogs.com/svg.image?a_{0}" title="a_{0}" />
+- Based on the action, it will get to some state <img src="https://latex.codecogs.com/svg.image?s_{1}" title="s_{1}" /> which is distributed according to the State Transition Probabilties <img src="https://latex.codecogs.com/svg.image?s_{1}&space;\sim&space;P_{s_{0}a_{0}}" title="s_{1} \sim P_{s_{0}a_{0}}" />
+- Then it will choose a new action <img src="https://latex.codecogs.com/svg.image?a_{1}" title="a_{1}" />
+- As a consequence of action <img src="https://latex.codecogs.com/svg.image?a_{1}" title="a_{1}" />, it will get to state <img src="https://latex.codecogs.com/svg.image?s_{2}" title="s_{2}" /> governed by the state transitional probabiltiies <img src="https://latex.codecogs.com/svg.image?s_{2}&space;\sim&space;P_{s_{1}a_{1}}" title="s_{2} \sim P_{s_{1}a_{1}}" />
 
 
 
