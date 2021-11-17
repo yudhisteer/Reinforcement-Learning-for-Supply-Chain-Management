@@ -31,8 +31,8 @@ https://user-images.githubusercontent.com/59663734/140646492-49b8debe-ba8c-4a06-
 2. The AI Solution
 - What is Reinforcement Learning?
 - Markov Decision Process(MDP)
-- Bellman Equation
 - Policy vs Plan
+- Bellman Equation
 - Living Penalty
 - Q-Learning
 - Temporal Difference
@@ -56,7 +56,7 @@ Early on, reinforcement learning has been used to play games like Atari Breakout
 ![image](https://user-images.githubusercontent.com/59663734/141984612-500278fb-287a-43fc-9851-fb880639e3a7.png)
 
 
-### 2.1 Markov Decision Process(MDP)
+### 2.2 Markov Decision Process(MDP)
 Reinforcement Learning problems are modelled by Markov Decision Process(MDP). MDP is a formalism to represent the world where our agent will interact with. It is a tuple of five elements: ![image](https://user-images.githubusercontent.com/59663734/142256520-82a1fbd8-fed2-405e-9567-08c7028cad3c.png)
 
  - S: Set of States (In chess this equals all possible chess positions and in our warehouse problem this will equal all posible positions our robot can navigate)
@@ -87,7 +87,7 @@ If we have our robot in cell ```(3,1)``` and we need it to go tUp to cell ```(3,
  - <img src="https://latex.codecogs.com/svg.image?P_{3,1}&space;\sim&space;(2,1)&space;=&space;0.1" title="P_{3,1} \sim (2,1) = 0.1" />
  - <img src="https://latex.codecogs.com/svg.image?P_{3,1}&space;\sim&space;(3,3)&space;=&space;0" title="P_{3,1} \sim (3,3) = 0" />
 
-To sum up, our robot will wake up at state:
+To sum up:
 
 - Our robot will wake up at state <img src="https://latex.codecogs.com/svg.image?s_{0}" title="s_{0}" /> (At the moment we turn on the robot)
 - Based on the state it is in, it will choose some action <img src="https://latex.codecogs.com/svg.image?a_{0}" title="a_{0}" />
@@ -95,10 +95,18 @@ To sum up, our robot will wake up at state:
 - Then it will choose a new action <img src="https://latex.codecogs.com/svg.image?a_{1}" title="a_{1}" />
 - As a consequence of action <img src="https://latex.codecogs.com/svg.image?a_{1}" title="a_{1}" />, it will get to state <img src="https://latex.codecogs.com/svg.image?s_{2}" title="s_{2}" /> governed by the state transitional probabiltiies <img src="https://latex.codecogs.com/svg.image?s_{2}&space;\sim&space;P_{s_{1}a_{1}}" title="s_{2} \sim P_{s_{1}a_{1}}" />
 
+Therefore our robots will go through a sequnece of states whereby the **total payoffs** will be the **sum of discounted rewards**:
+
+<img src="https://latex.codecogs.com/svg.image?Total-payoffs&space;=&space;R(s_{0})&plus;\gamma&space;\cdot&space;R(s_{1})&plus;\gamma&space;^{2}\cdot&space;R(s_{2})" title="Total-payoffs = R(s_{0})+\gamma \cdot R(s_{1})+\gamma ^{2}\cdot R(s_{2})" /> whereby <img src="https://latex.codecogs.com/svg.image?\gamma&space;&space;=&space;0.99" title="\gamma = 0.99" />
+
+There are two reasons to use a discounted factor:
+1. The concept is similar to the Time Value of Money where money of today has more value than money of tomorrow. Therefore, we encourage the system to get to the positive rewards as quickly as possible and push the negative rewards as far into the future as possible.
+2. It is more practical to make RL algorithms to converge.
+
+Our goal will be to be able to choose actions that will **maximize our expected total payoffs.** In order to do son, we need to devise a ```policy``` that will map states to actions.
 
 
-
-
+### 2.3 Policy
 
 
 ## Conclusion
