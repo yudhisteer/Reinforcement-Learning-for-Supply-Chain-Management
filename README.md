@@ -49,7 +49,7 @@ https://user-images.githubusercontent.com/59663734/140646492-49b8debe-ba8c-4a06-
 ### 2.1 Reinforcement Learning Overview
 If we want to train a helicopter to fly and we are given the position, which is the **state**, of the helicopter at a given point in time and we need to take actions to make it fly in a certain trajectory then there is no direct mapping of x to y to how to fly the helicopter. Therefore, it is going to be hard to use supervised learning for this problem. However, with reinforcement learning we don't need to specify the correct answer at every step but only a **reward function** to specify the helicopter when it is flying well and when it is doing poorly. A high reward would signify the helicopter is flying in the correct trajectory and a negative reward when it crashes. 
 
-We can observe this process similar to training a dog whereby the latter is given a treat whenever it does something that is being asked. In our case, our rewards which can be value of ```+1, -1 or 0``` will do the exact same job as the treat. One of the challenges of RL is the **Credit Assignment Problem**. For example in a game of chess, we cannot say it is the last move that made us lose. It could have been the 15th one or the 10th or even the first one. This happens because our rewards are **sparse and infrequent**. In **sparse rewards**, we get the rewards only in the end whereas in dense **rewards** we know what we are doing right or wrong while doing it. Therefore, we need to solve this problem indirectly by proposing small rewards along the way and a bigger reward in the end. 
+We can observe this process similar to training a dog whereby the latter is given a treat whenever it does something that is being asked. In our case, our rewards which can be value of ```+1, -1 or 0``` will do the exact same job as the treat. One of the challenges of RL is the **Credit Assignment Problem**. For example in a game of chess, we cannot say it is the last move that made us lose. It could have been the 15th one or the 10th or even the first one. This happens because our rewards are **sparse and infrequent**. In **sparse rewards**, we get the rewards only in the end whereas in **dense rewards** we know what we are doing right or wrong while doing it. Therefore, we need to solve this problem indirectly by proposing small rewards along the way and a bigger reward in the end. 
 
 Early on, reinforcement learning has been used to play games like Atari Breakout. Most recently using OpenAI Gym, we can make a humanoid learn how to walk and do a parkour course. Now we are trying to teach self-dricing cars to drive using RL. Instead of going physically on the road where there are risks on collision and damage, we train the car in a simulator and after a lot of trials, we can then let it drive on real physical roads. 
 
@@ -66,7 +66,7 @@ Reinforcement Learning problems are modelled by Markov Decision Process(MDP). MD
  - <img src="https://latex.codecogs.com/svg.image?\gamma&space;" title="\gamma " />: Discount Factor <img src="https://latex.codecogs.com/svg.image?\gamma&space;&space;\epsilon&space;&space;[0,1]" title="\gamma \epsilon [0,1]" />
  - R: Reward Function
 
-For simplicity, we wil reduce our warehouse to a simple ```4 x 3``` grid world with one obstacle at coordinates (2,2) as shown below:
+For simplicity, we wil reduce our warehouse to a simple ```3 x 4``` grid world with one obstacle at coordinates (2,2) as shown below:
 
 ![image](https://user-images.githubusercontent.com/59663734/142264675-d6b388cb-5c04-4f47-9344-f64b8558afdb.png)
 
@@ -100,7 +100,7 @@ Therefore our robots will go through a sequnece of states whereby the **total pa
 <img src="https://latex.codecogs.com/svg.image?Total-payoffs&space;=&space;R(s_{0})&plus;\gamma&space;\cdot&space;R(s_{1})&plus;\gamma&space;^{2}\cdot&space;R(s_{2})" title="Total-payoffs = R(s_{0})+\gamma \cdot R(s_{1})+\gamma ^{2}\cdot R(s_{2})" /> whereby <img src="https://latex.codecogs.com/svg.image?\gamma&space;&space;=&space;0.99" title="\gamma = 0.99" />
 
 There are two reasons to use a discounted factor:
-1. The concept is similar to the Time Value of Money where money of today has more value than money of tomorrow. Therefore, we encourage the system to get to the positive rewards as quickly as possible and push the negative rewards as far into the future as possible.
+1. The concept is similar to the Time Value of Money where money of today has more value than money of tomorrow. We discount future rewards so that they don't count as much as the current reward. Similar to human behavior, we prefer short term rewards to long term rewards. 
 2. It is more practical to make RL algorithms to converge.
 
 Our goal will be to be able to choose actions that will **maximize our expected total payoffs.** In order to do son, we need to devise a ```policy``` that will map states to actions.
