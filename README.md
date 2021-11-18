@@ -112,18 +112,28 @@ The policy or controller is the output of our RL algorithm which maps states to 
 
 ![image](https://user-images.githubusercontent.com/59663734/142393708-0a00e403-3ddd-4410-9c54-cf821a1427a7.png)
 
-We would have assumed that from cell (3,1), we would have gone to cell (3,2) then (3,3) then (4,3). However, our optimal policy suggest that since there is a slight possibility that we slid to the fire in cell (4,2), it is better we take the longer route. Note that this can be adjusted by having a higher **living penalty**.
+We would have assumed that from cell (3,1), we would have gone to cell (3,2) then (3,3) then (4,3). However, our optimal policy suggest that since there is a slight possibility(10% as per our State Transitional Probabilities) that we slid to the fire in cell (4,2), it is better we take the longer route. Note that this can be adjusted by having a higher **living penalty**.
 
 
 #### How to find the optimal policy?
 There is an exponentially large number of policies. For our simple grid of 11 states and 4 actions per state, there are <img src="https://latex.codecogs.com/svg.image?4^{11}" title="4^{11}" /> possible policies which is still small as we are dealing with a small MDP. However for our real warehouse, we have 
 <img src="https://latex.codecogs.com/svg.image?4^{270}" title="4^{270}" /> policies which is a huge number. 
 
-Hence to find the value function we need to define our **Value Fucntion**.
+Hence, to find the optimal policy, we need to define our **Value Function**.
 
 
 ### 2.4 Value Function, V
+To find our optimal policy, we first need define <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}" title="V^{\Pi }" />, <img src="https://latex.codecogs.com/svg.image?V^{*}" title="V^{*}" /> and <img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}" title="\Pi ^{*}" />.
 
+#### 2.4.1 Value Function for Policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\Pi " />, <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}" title="V^{\Pi }" />
+For a policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\Pi " />, <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}" title="V^{\Pi }" />(Value function for Policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\Pi " />): <img src="https://latex.codecogs.com/svg.image?S\mapsto&space;R" title="S\mapsto R" /> is such that <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)" title="V^{\Pi }(S)" /> is the expected total payoffs for starting in state s and executing <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\Pi " />.
+
+<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;E[R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1}\)&plus;\cdots\mid&space;\Pi&space;,&space;S_{0}&space;=&space;s]" title="V^{\Pi }(S) = E[R(S_{0}) + \gamma \cdot R(S_{1}\)+\cdots\mid \Pi , S_{0} = s]" /> which leads us to the **Bellman Equation.**
+
+### 2.5 Bellman's Equation
+We start by introducing the **immediate reward** <img src="https://latex.codecogs.com/svg.image?R(S_{0})" title="R(S_{0})" /> whereby we reward the agent just for being in that starting state. The nit will perform some actions and go to a new state <img src="https://latex.codecogs.com/svg.image?S_{1}" title="S_{1}" /> where it will receive a reward <img src="https://latex.codecogs.com/svg.image?\gamma&space;\cdot&space;R(S_{1})" title="\gamma \cdot R(S_{1})" /> and perform again some action and receive another reward <img src="https://latex.codecogs.com/svg.image?\gamma^2&space;\cdot&space;R(S_{2})" title="\gamma^2 \cdot R(S_{2})" />. We can write this equation as follows:
+
+<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1})&plus;\gamma^2&space;\cdot&space;R(S_{2})&plus;\cdots&space;" title="V^{\Pi }(S) = R(S_{0}) + \gamma \cdot R(S_{1})+\gamma^2 \cdot R(S_{2})+\cdots " />
 
 
 
