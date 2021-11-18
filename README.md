@@ -106,7 +106,28 @@ There are two reasons to use a discounted factor:
 Our goal will be to be able to choose actions that will **maximize our expected total payoffs.** In order to do son, we need to devise a ```policy``` that will map states to actions.
 
 
-### 2.3 Policy
+### 2.3 Policy <img src="https://latex.codecogs.com/svg.image?\prod&space;:S\to&space;A" title="\prod :S\to A" />
+The policy or controller is the output of our RL algorithm which maps states to actions. So for our MDP, if we are in state ```(3,1)```, our policy will be ```Right```. Therefore the optimial policy for this MDP means that whenever we are in state s, we need to take action <img src="https://latex.codecogs.com/svg.image?\prod(s)&space;" title="\prod(s) " /> and subsequently this policy will maximize the expected total payoffs. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Conclusion
