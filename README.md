@@ -131,11 +131,22 @@ For a policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\
 <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;E[R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1}\)&plus;\cdots\mid&space;\Pi&space;,&space;S_{0}&space;=&space;s]" title="V^{\Pi }(S) = E[R(S_{0}) + \gamma \cdot R(S_{1}\)+\cdots\mid \Pi , S_{0} = s]" /> which leads us to the **Bellman Equation.**
 
 ### 2.5 Bellman's Equation
-We start by introducing the **immediate reward** <img src="https://latex.codecogs.com/svg.image?R(S_{0})" title="R(S_{0})" /> whereby we reward the agent just for being in that starting state. The nit will perform some actions and go to a new state <img src="https://latex.codecogs.com/svg.image?S_{1}" title="S_{1}" /> where it will receive a reward <img src="https://latex.codecogs.com/svg.image?\gamma&space;\cdot&space;R(S_{1})" title="\gamma \cdot R(S_{1})" /> and perform again some action and receive another reward <img src="https://latex.codecogs.com/svg.image?\gamma^2&space;\cdot&space;R(S_{2})" title="\gamma^2 \cdot R(S_{2})" />. We can write this equation as follows:
+We start by introducing the **immediate reward** <img src="https://latex.codecogs.com/svg.image?R(S_{0})" title="R(S_{0})" /> whereby we reward the agent just for being in that starting state. The agent will perform some action and go to a new state <img src="https://latex.codecogs.com/svg.image?S_{1}" title="S_{1}" /> where it will receive a reward <img src="https://latex.codecogs.com/svg.image?\gamma&space;\cdot&space;R(S_{1})" title="\gamma \cdot R(S_{1})" /> and perform again some action and receive another reward <img src="https://latex.codecogs.com/svg.image?\gamma^2&space;\cdot&space;R(S_{2})" title="\gamma^2 \cdot R(S_{2})" />. We can write this equation as follows:
 
-<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1})&plus;\gamma^2&space;\cdot&space;R(S_{2})&plus;\cdots&space;" title="V^{\Pi }(S) = R(S_{0}) + \gamma \cdot R(S_{1})+\gamma^2 \cdot R(S_{2})+\cdots " />
+<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;E[R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1})&plus;\gamma^2&space;\cdot&space;R(S_{2})&plus;\cdots\mid&space;\Pi&space;,S_{0}=s]&space;" title="V^{\Pi }(S) = E[R(S_{0}) + \gamma \cdot R(S_{1})+\gamma^2 \cdot R(S_{2})+\cdots\mid \Pi ,S_{0}=s] " />
 
 
+If we factor out one factor of gamma, the equation becomes:
+
+<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;E[R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;(R(S_{1})&plus;\gamma^&space;\cdot&space;R(S_{2})&plus;\cdots)\mid&space;\Pi&space;,S_{0}=s]&space;" title="V^{\Pi }(S) = E[R(S_{0}) + \gamma \cdot (R(S_{1})+\gamma^ \cdot R(S_{2})+\cdots)\mid \Pi ,S_{0}=s] " /> <img src="https://latex.codecogs.com/svg.image?\mapsto&space;" title="\mapsto " /> Equation 1
+
+where <img src="https://latex.codecogs.com/svg.image?R(S_{1})&plus;\gamma^&space;\cdot&space;R(S_{2})&plus;\cdots&space;=&space;\mathbf{V^{\Pi&space;}(S_{1})}" title="R(S_{1})+\gamma^ \cdot R(S_{2})+\cdots = \mathbf{V^{\Pi }(S_{1})}" /> knowm as the ```Expected Future Rewards``` or the sum of discounted rewards when the robot wakes up is state <img src="https://latex.codecogs.com/svg.image?S_{1}" title="S_{1}" />.
+
+From this we can write **Bellman's Equations**:
+
+<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;R(S_{})&space;&plus;&space;\gamma&space;\cdot\sum_{S^{'}}P_{S,\Pi&space;(S)}(S^{'})V^{\Pi&space;}(S^{'})" title="V^{\Pi }(S) = R(S_{}) + \gamma \cdot\sum_{S^{'}}P_{S,\Pi (S)}(S^{'})V^{\Pi }(S^{'})" /> <img src="https://latex.codecogs.com/svg.image?\mapsto&space;" title="\mapsto " /> Equation 2
+
+We have <img src="https://latex.codecogs.com/svg.image?S'&space;\sim&space;P_{s,\Pi&space;(s)}" title="S' \sim P_{s,\Pi (s)}" /> . That is in state S, take action <img src="https://latex.codecogs.com/svg.image?a&space;=&space;\Pi&space;(S)" title="a = \Pi (S)" />.
 
 
 
