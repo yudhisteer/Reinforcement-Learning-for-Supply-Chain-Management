@@ -32,8 +32,7 @@ https://user-images.githubusercontent.com/59663734/140646492-49b8debe-ba8c-4a06-
 - What is Reinforcement Learning?
 - Markov Decision Process(MDP)
 - Policy
-- Value Function
-- Bellman Equation
+- Bellman's Equation
 - Living Penalty
 - Q-Learning
 - Temporal Difference
@@ -122,7 +121,7 @@ There is an exponentially large number of policies. For our simple grid of 11 st
 Hence, to find the optimal policy, we need to define our **Value Function**.
 
 
-### 2.4 Value Function, V
+### 2.4 Bellman's Equation
 To find our optimal policy, we first need define <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}" title="V^{\Pi }" />, <img src="https://latex.codecogs.com/svg.image?V^{*}" title="V^{*}" /> and <img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}" title="\Pi ^{*}" />.
 
 #### 2.4.1 Value Function for Policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\Pi " />, <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}" title="V^{\Pi }" />
@@ -130,7 +129,7 @@ For a policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;" title="\
 
 <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;E[R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1}\)&plus;\cdots\mid&space;\Pi&space;,&space;S_{0}&space;=&space;s]" title="V^{\Pi }(S) = E[R(S_{0}) + \gamma \cdot R(S_{1}\)+\cdots\mid \Pi , S_{0} = s]" /> which leads us to the **Bellman Equation.**
 
-### 2.5 Bellman's Equation
+#### 2.4.2 Bellman's Equation
 We start by introducing the **immediate reward** <img src="https://latex.codecogs.com/svg.image?R(S_{0})" title="R(S_{0})" /> whereby we reward the agent just for being in that starting state. The agent will perform some action and go to a new state <img src="https://latex.codecogs.com/svg.image?S_{1}" title="S_{1}" /> where it will receive a reward <img src="https://latex.codecogs.com/svg.image?\gamma&space;\cdot&space;R(S_{1})" title="\gamma \cdot R(S_{1})" /> and perform again some action and receive another reward <img src="https://latex.codecogs.com/svg.image?\gamma^2&space;\cdot&space;R(S_{2})" title="\gamma^2 \cdot R(S_{2})" />. We can write this equation as follows:
 
 <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)&space;=&space;E[R(S_{0})&space;&plus;&space;\gamma&space;\cdot&space;R(S_{1})&plus;\gamma^2&space;\cdot&space;R(S_{2})&plus;\cdots\mid&space;\Pi&space;,S_{0}=s]&space;" title="V^{\Pi }(S) = E[R(S_{0}) + \gamma \cdot R(S_{1})+\gamma^2 \cdot R(S_{2})+\cdots\mid \Pi ,S_{0}=s] " />
@@ -148,9 +147,29 @@ From this we can write **Bellman's Equations**:
 
 We have <img src="https://latex.codecogs.com/svg.image?S'&space;\sim&space;P_{s,\Pi&space;(s)}" title="S' \sim P_{s,\Pi (s)}" /> . That is in state S, take action <img src="https://latex.codecogs.com/svg.image?a&space;=&space;\Pi&space;(S)" title="a = \Pi (S)" />.
 
+Now we need to solve for <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)" title="V^{\Pi }(S)" />. So given <img src="https://latex.codecogs.com/svg.image?\Pi" title="\Pi" />, we get a system of linear equations in terms of <img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(S)" title="V^{\Pi }(S)" />.
 
+If our agent is in cell (3,1) then our value function is:
 
+<img src="https://latex.codecogs.com/svg.image?V^{\Pi&space;}(3,1)&space;=&space;R(3,1)&space;&plus;&space;\gamma&space;(0.8\cdot&space;V^{\Pi&space;}(3,2)&plus;0.1\cdot&space;V^{\Pi&space;}(2,1)&plus;0.1\cdot&space;V^{\Pi&space;}(4,1))" title="V^{\Pi }(3,1) = R(3,1) + \gamma (0.8\cdot V^{\Pi }(3,2)+0.1\cdot V^{\Pi }(2,1)+0.1\cdot V^{\Pi }(4,1))" />
 
+#### 2.4.3 Optimal Value Function, V*
+V* is the value of the best optimal policy for that state. 
+
+<img src="https://latex.codecogs.com/svg.image?V^{*}(S)&space;=&space;\underset{\Pi&space;}{max}V^{\Pi&space;}(S)" title="V^{*}(S) = \underset{\Pi }{max}V^{\Pi }(S)" />
+
+```Bellman's equation for the optimal value function:```
+<img src="https://latex.codecogs.com/svg.image?V^{*}(S)&space;=&space;R(S)&plus;\underset{a}{max}&space;\gamma&space;\sum_{S_{1}}P_{sa}({S_{1})V^{*}(S)" title="V^{*}(S) = R(S)+\underset{a}{max} \gamma \sum_{S_{1}}P_{sa}({S_{1})V^{*}(S)" /> 
+
+where <img src="https://latex.codecogs.com/svg.image?\sum_{S_{1}}P_{sa}({S_{1})V^{*}(S)" title="\sum_{S_{1}}P_{sa}({S_{1})V^{*}(S)" /> is the expected future reward.
+
+#### 2.4.4 Optimal Policy, <img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}" title="\Pi ^{*}" />
+
+If our robot is in state s then what is the best action I could take from state s? The action that maximizes the total expected payoffs. 
+
+<img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}(S)&space;=&space;\underset{a}{argmax}&space;\gamma&space;\sum_{S'_{}}P_{sa}({S'_{})V^{*}(S')" title="\Pi ^{*}(S) = \underset{a}{argmax} \gamma \sum_{S'_{}}P_{sa}({S'_{})V^{*}(S')" />
+
+From the optimal policy we will find the value of ```a``` at which mazimum is attained. We then need to plug in <img src="https://latex.codecogs.com/svg.image?a&space;=&space;\Pi&space;^{*}(S)" title="a = \Pi ^{*}(S)" /> in our Optimal Value Function.
 
 
 
