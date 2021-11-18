@@ -215,8 +215,39 @@ We use a neural network to learn the Q-function and then use the latter to infer
 To adresss the problems above, we will need to use ```Policy Learning```.
 
 #### 2.5.2 Policy Learning
+In policy learning, we are not outputting Q-function but directly optimizing the policy <img src="https://latex.codecogs.com/svg.image?\Pi&space;^{}(S)" title="\Pi ^{}(S)" /> - the probability distributions over the space of all actions given that state. This is the probability that taking that action is going to result in the highest Q-value. We can take actions by sampling from that distribution. 
 
 
+#### Advantage of Policy Gradient
+- We are no longer constrained to only categorical action spaces.
+- We can parametrize this probability distribution however we would like. 
+
+With a discrete action space we ask which direction we should move: Left, Right, Up or Down. But with a continuous action space, we ask how fast can the agent move and in which direction?
+
+#### Training the Policy Gradient
+1. Initialize the agent
+2. Run a given policy until crash
+3. Record all states, rewards and actions
+4. Decrease probability of actions that resulted in low reward
+5. Increase probability of actions that resulted in high reward
+
+Using the ```log-likelihood of action```, it tells us how likely the action that we selected was.
+
+<img src="https://latex.codecogs.com/png.image?\dpi{110}&space;loss&space;=&space;log&space;P(a_{t}\mid&space;s_{t})R_{t}" title="loss = log P(a_{t}\mid s_{t})R_{t}" />
+
+**Scenatio 1:** If our agent got a lot of reward from an action that has a very large likelihood (that is very likely to be selected) then
+
+Loss = - (large number x large number)
+     = - large number
+     
+Thefore, we have a **minimum loss.**
+
+**Scenatio 2:** If reward is low and probability of selecting that action is high then
+
+Loss = - (large number x small number)
+     = - small number
+     
+Thefore, we have a **high loss.**
 
 
 
