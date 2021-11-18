@@ -31,7 +31,8 @@ https://user-images.githubusercontent.com/59663734/140646492-49b8debe-ba8c-4a06-
 2. The AI Solution
 - What is Reinforcement Learning?
 - Markov Decision Process(MDP)
-- Policy vs Plan
+- Policy
+- Value Function
 - Bellman Equation
 - Living Penalty
 - Q-Learning
@@ -106,15 +107,22 @@ There are two reasons to use a discounted factor:
 Our goal will be to be able to choose actions that will **maximize our expected total payoffs.** In order to do son, we need to devise a ```policy``` that will map states to actions.
 
 
-### 2.3 Policy <img src="https://latex.codecogs.com/svg.image?\prod&space;:S\to&space;A" title="\prod :S\to A" />
+### 2.3 Policy,  <img src="https://latex.codecogs.com/svg.image?\prod&space;:S\to&space;A" title="\prod :S\to A" />
 The policy or controller is the output of our RL algorithm which maps states to actions. So for our MDP, if we are in state ```(3,1)```, our policy will be ```Right```. Therefore the optimial policy for this MDP means that whenever we are in state s, we need to take action <img src="https://latex.codecogs.com/svg.image?\prod(s)&space;" title="\prod(s) " /> and subsequently this policy will maximize the expected total payoffs. 
 
+![image](https://user-images.githubusercontent.com/59663734/142393708-0a00e403-3ddd-4410-9c54-cf821a1427a7.png)
+
+We would have assumed that from cell (3,1), we would have gone to cell (3,2) then (3,3) then (4,3). However, our optimal policy suggest that since there is a slight possibility that we slid to the fire in cell (4,2), it is better we take the longer route. Note that this can be adjusted by having a higher **living penalty**.
 
 
+#### How to find the optimal policy?
+There is an exponentially large number of policies. For our simple grid of 11 states and 4 actions per state, there are <img src="https://latex.codecogs.com/svg.image?4^{11}" title="4^{11}" /> possible policies which is still small as we are dealing with a small MDP. However for our real warehouse, we have 
+<img src="https://latex.codecogs.com/svg.image?4^{270}" title="4^{270}" /> policies which is a huge number. 
+
+Hence to find the value function we need to define our **Value Fucntion**.
 
 
-
-
+### 2.4 Value Function, V
 
 
 
