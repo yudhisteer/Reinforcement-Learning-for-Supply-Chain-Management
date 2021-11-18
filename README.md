@@ -171,6 +171,53 @@ If our robot is in state s then what is the best action I could take from state 
 
 From the optimal policy we will find the value of ```a``` at which mazimum is attained. We then need to plug in <img src="https://latex.codecogs.com/svg.image?a&space;=&space;\Pi&space;^{*}(S)" title="a = \Pi ^{*}(S)" /> in our Optimal Value Function.
 
+To sum up, the strategy we can use to find our optimal policy:
+1. Find V*
+2. Use argmax equation to find <img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}" title="\Pi ^{*}" />
+
+
+### 2.5 Q-Value, Q
+A Q-value function (Q) shows us how good a certain action is, given a state, for an agent following a policy. The optimal Q-value function (Q*) gives us maximum return achievable from a given state-action pair by any policy. The Q-functions captures the ```expected total future reward``` an agent in state s can receive by executing a certain action a.
+
+<img src="https://latex.codecogs.com/svg.image?Q(s_{t},a_{t})&space;=&space;E[R_{t}\mid&space;s_{t},a_{t}]" title="Q(s_{t},a_{t}) = E[R_{t}\mid s_{t},a_{t}]" />
+
+We want to take actions that maximize our Q-value. Ultimately, the agent needs a policy <img src="https://latex.codecogs.com/svg.image?\Pi(s)&space;" title="\Pi(s) " />, to infer the best action to take at its state s. 
+
+<img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}(s)&space;=&space;\underset{a}{argmax}Q(s,a)" title="\Pi ^{*}(s) = \underset{a}{argmax}Q(s,a)" />
+
+So how do we use Q-value to take the next action?
+- We feed in all possible actions we can execute at that time.
+- We evaluate our Q-function(High Q-value and Low Q-value)
+- We pick the action that give us the highest Q-value
+
+There are two ways to find that optimal policy:
+1. Value Learning
+2. Policy Learning
+
+#### 2.5.1 Value Learning
+We want our neural network to learn the Q-function and then we will use that Q-function to define our policy.
+
+Instead of trying out each different possible actions that we can execute at a given state and output its corresponding Q-value, we want to find the Q-values of each possible actions at a particular state and maximize the target return that will be used to train the agent. The target return is going to be maximized over some infinite time horizon and since can serve as the ground truth to train that agent. 
+
+![image](https://user-images.githubusercontent.com/59663734/142451042-de5ea2b2-8f38-4d90-8eb0-3204202e5cf1.png)
+
+So we can basically roll out the agent and see how it did in the future and based on its performance, we can use that as ground truth. Our target Q-value will be the sum of the reward we got at that time by taking that action and the bes taction we can take at every future time after discounted. 
+
+![image](https://user-images.githubusercontent.com/59663734/142453289-8e4caa7c-5fe2-4571-9197-f3748cf05e83.png)
+
+We use a neural network to learn the Q-function and then use the latter to infer define the optimal policy 
+<img src="https://latex.codecogs.com/svg.image?\Pi&space;^{*}(S)" title="\Pi ^{*}(S)" />. Finally, we send the action back to the environment and receive the next state.
+
+#### Drawback of Q-learning
+- Q-value learning is really suited for a deterministic environment with discrete actions spaces. It cannot learn stochastic policies.
+- It does not perform well in complex action scenarios where we have a large number of action space. 
+
+To adresss the problems above, we will need to use ```Policy Learning```.
+
+#### 2.5.2 Policy Learning
+
+
+
 
 
 
